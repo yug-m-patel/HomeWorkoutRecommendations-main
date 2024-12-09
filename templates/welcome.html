@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('{{ url_for('static', filename='welcome_background.jpg') }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fefeff;
+}
+
+/* Adding a gradient overlay for depth */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+    z-index: 10;
+}
+
+.logo img {
+    width: 88px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    font-size: 1.2em;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fefeff;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s, border 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fefeff; /* Border visible on hover */
+    transform: scale(1.1);
+}
+
+/* Page content styles */
+.welcome-container {
+    position: absolute;
+    bottom: 10%;
+    right: 10%; /* Positioned to the right */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px); /* Glassmorphism */
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.welcome-container:hover {
+    transform: scale(1.05);
+}
+
+.welcome-container a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fefeff;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 12px 30px;
+    border: 2px solid #fefeff; /* Transparent with border */
+    border-radius: 50px;
+    background-color: transparent; /* Transparent background */
+    transition: background-color 0.3s, transform 0.3s, border 0.3s;
+}
+
+.welcome-container a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Adds slight transparency on hover */
+    transform: translateY(-5px); /* Makes buttons pop */
+}
+
+.welcome-container a:active {
+    transform: scale(0.98); /* Gives a press effect */
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Welcome</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/welcome"><img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/welcome">Home</a></li>
+                <li><a href="/beginner">Beginner</a></li>
+                <li><a href="/advanced">Advanced</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="welcome-container">
+        <a class="btn-beginner" href="/beginner">Beginner</a>
+        <a class="btn-advanced" href="/advanced">Advanced</a>
+    </div>
+</body>
+
+</html>
